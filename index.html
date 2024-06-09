@@ -75,34 +75,43 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     </div><br>
     <p>To book a sitting, fill out the form below:</p>
 
-    <form action="send_email.php" method="post">
+    <form id="bookingForm" action="#" method="POST">
       <p><input class="w3-input w3-padding-16" type="text" placeholder="Your Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Your Email" required name="Email"></p>
+      <p><input class="w3-input w3-padding-16" type="email" placeholder="Your Email" required name="Email"></p>
       <p><input class="w3-input w3-padding-16" type="text" placeholder="Walking or Playtime" required name="Service"></p>
       <p><input class="w3-input w3-padding-16" type="text" placeholder="Amount of Time" required name="Time"></p>
       <p>
-        <button class="w3-button w3-light-grey w3-padding-large" type="submit">
+        <button id="submitBtn" class="w3-button w3-light-grey w3-padding-large" type="submit">
           <i class="fa fa-paper-plane"></i> BOOK NOW
         </button>
       </p>
     </form>
   <!-- End Contact Section -->
   </div>
-  
-  <!-- Footer -->
-  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-  <!-- End footer -->
-  </footer>
 
-<!-- END PAGE CONTENT -->
-</div>
-
-</body>
-</html>
+  <script>
+    document.getElementById("bookingForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      const formDataJson = {};
+      formData.forEach(function(value, key){
+        formDataJson[key] = value;
+      });
+      const webhookURL = "https://discord.com/api/webhooks/1249221725430878249/1Oel-D2tSrhdlcJ05dBjlEF9iYaKvUfAs3ukE0Gkwx0VgjaaZmR4fGujWG1uPtvjK4bx";
+      fetch(webhookURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formDataJson)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        alert('Your booking has been submitted successfully!');
+        document.getElementById("bookingForm").reset();
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+        alert('There was an error submitting your booking. Please try again
