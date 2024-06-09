@@ -5,17 +5,79 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
-.w3-sidebar {width: 120px;background: #222;}
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+.w3-sidebar {
+  width: 200px;
+  background-color: #1f1f1f;
+  position: fixed;
+  height: 100vh;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.w3-sidebar a {
+  width: 160px;
+  height: 160px;
+  border-radius: 15px;
+  margin: 10px 0;
+  padding: 40px 0;
+  text-decoration: none;
+  font-size: 18px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  background-color: #2c2c2c;
+}
+.w3-sidebar a:hover {
+  background-color: #575757;
+}
+#main {
+  margin-left: 220px;
+  padding: 20px;
+}
+.w3-container {
+  margin-bottom: 30px;
+}
+.w3-button {
+  background-color: #4CAF50;
+  color: white;
+}
+.w3-input, .w3-select {
+  margin-bottom: 15px;
+  border: 1px solid #555;
+  background-color: #2c2c2c;
+  color: #fff;
+}
+.w3-footer {
+  background-color: #1f1f1f;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.w3-card {
+  background-color: #2c2c2c;
+  padding: 20px;
+  border-radius: 8px;
+}
+.w3-card hr {
+  border-top: 1px solid #4CAF50;
+}
+.w3-button:hover {
+  background-color: #45a049;
+}
 </style>
 <script>
 function bookService() {
@@ -48,64 +110,55 @@ function bookService() {
 }
 </script>
 </head>
-<body class="w3-black">
+<body>
 
-<!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <i class="fa fa-home w3-xxlarge"></i>
-    <p>HOME</p>
-  </a>
-  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-user w3-xxlarge"></i>
-    <p>ABOUT</p>
-  </a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-envelope w3-xxlarge"></i>
-    <p>CONTACT</p>
-  </a>
+<!-- Sidebar -->
+<nav class="w3-sidebar">
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-home w3-xxlarge"></i> <span class="w3-large">Home</span></a>
+  <a href="#about" class="w3-bar-item w3-button"><i class="fa fa-user w3-xxlarge"></i> <span class="w3-large">About</span></a>
+  <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope w3-xxlarge"></i> <span class="w3-large">Contact</span></a>
 </nav>
 
 <!-- Page Content -->
-<div class="w3-padding-large" id="main">
+<div id="main">
   <!-- Header/Home -->
-  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-    <h1 class="w3-jumbo">Matthew's Dog Sittings</h1>
-    <p>13-year-old boy who loves to play and walk with his 3 dogs</p>
+  <header class="w3-container w3-center" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">Welcome to</span> Matthew's Dog Sittings</h1>
+    <p>Professional dog walking and playtime services in Austin</p>
   </header>
 
   <!-- About Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-    <h2 class="w3-text-light-grey">About Me</h2>
-    <hr style="width:200px" class="w3-opacity">
-    <p>I'm Matthew, a 13-year-old boy from Austin who has 3 dogs. I love to play and walk with them.</p>
-  <!-- End About Section -->
+  <div class="w3-container w3-card w3-margin-bottom" id="about">
+    <p class="w3-text-light-grey w3-padding-8" style="font-size: 34px; line-height: 0.001;">About Me</p>
+    <hr>
+    <p>Hi! I'm Matthew, a 13-year-old dog lover from Austin, Texas. I have three amazing dogs of my own, and I absolutely love spending time with them. Whether it's taking them for a walk around the neighborhood or playing fetch in the park, I make sure they have a great time and get the exercise they need.</p>
+    <p>I started this dog sitting service to help other dog owners in my community. I understand how busy life can get, and sometimes it's hard to find time to give your furry friends the attention they deserve. That's where I come in! I'll treat your dogs as if they were my own, ensuring they are happy, healthy, and well-cared for.</p>
+    <p>In addition to walking and playing with dogs, I also provide basic training reinforcement and lots of love and affection. I'm responsible, reliable, and passionate about dogs. I look forward to meeting you and your pets!</p>
   </div>
   
   <!-- Contact Section -->
-  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
-    <h2 class="w3-text-light-grey">Contact Me</h2>
-    <hr style="width:200px" class="w3-opacity">
-
+  <div class="w3-container w3-card" id="contact">
+    <p class="w3-text-light-grey w3-padding-8" style="font-size: 34px; line-height: 0.001;">Contact Me</p>
+    <hr>
     <div class="w3-section">
-      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Austin, US</p>
-      <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +1 737 288 5219</p>
-      <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: matthewcrowder2011@gmail.com</p>
-    </div><br>
+      <p><i class="fa fa-map-marker fa-fw w3-text-light-grey w3-xxlarge w3-margin-right"></i> Austin, US</p>
+      <p><i class="fa fa-phone fa-fw w3-text-light-grey w3-xxlarge w3-margin-right"></i> Phone: +1 737 288 5219</p>
+      <p><i class="fa fa-envelope fa-fw w3-text-light-grey w3-xxlarge w3-margin-right"> </i> Email: matthewcrowder2011@gmail.com</p>
+    </div>
     <p>Book a service:</p>
 
     <form>
       <p><input class="w3-input w3-padding-16" type="text" placeholder="Your Name" required id="name"></p>
       <p><input class="w3-input w3-padding-16" type="text" placeholder="Your Contact Info" required id="contactInfo"></p>
       <p>
-        <select class="w3-input w3-padding-16" id="serviceType">
+        <select class="w3-select w3-padding-16" id="serviceType">
           <option value="Walk">Walking</option>
           <option value="Play">Playtime</option>
         </select>
       </p>
       <p><input class="w3-input w3-padding-16" type="text" placeholder="Duration (e.g., 1 hour)" required id="duration"></p>
       <p>
-        <button class="w3-button w3-light-grey w3-padding-large" type="button" onclick="bookService()">
+        <button class="w3-button w3-padding-large w3-hover-black" type="button" onclick="bookService()">
           <i class="fa fa-calendar"></i> BOOK NOW
         </button>
       </p>
@@ -113,12 +166,13 @@ function bookService() {
   <!-- End Contact Section -->
   </div>
   
-    <!-- Footer -->
-  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-    <p class="w3-medium">Powered by <a href="https://www.w3schools
+  <!-- Footer -->
+  <footer class="w3-footer">
+    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  </footer>
+
+<!-- END PAGE CONTENT -->
+</div>
+
+</body>
+</html>
