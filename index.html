@@ -17,13 +17,41 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 /* Remove margins from "page content" on small screens */
 @media only screen and (max-width: 600px) {#main {margin-left: 0}}
 </style>
+<script>
+function bookService() {
+    var webhookURL = "https://discord.com/api/webhooks/1249221725430878249/1Oel-D2tSrhdlcJ05dBjlEF9iYaKvUfAs3ukE0Gkwx0VgjaaZmR4fGujWG1uPtvjK4bx";
+    var name = document.getElementById('name').value;
+    var contactInfo = document.getElementById('contactInfo').value;
+    var serviceType = document.getElementById('serviceType').value;
+    var duration = document.getElementById('duration').value;
+    var message = "Booking request:\nName: " + name + "\nContact Info: " + contactInfo + "\nService Type: " + serviceType + "\nDuration: " + duration;
+    
+    fetch(webhookURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content: message }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.error('Failed to send message:', response);
+        } else {
+            console.log('Message sent successfully!');
+            alert('Booking request sent successfully!');
+        }
+    })
+    .catch(error => {
+        console.error('Error sending message:', error);
+        alert('Error sending booking request. Please try again later.');
+    });
+}
+</script>
 </head>
 <body class="w3-black">
 
 <!-- Icon Bar (Sidebar - hidden on small screens) -->
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-  <!-- Avatar image in top left corner -->
-  <img src="/w3images/avatar_smoke.jpg" style="width:100%">
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
     <i class="fa fa-home w3-xxlarge"></i>
     <p>HOME</p>
@@ -38,31 +66,22 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   </a>
 </nav>
 
-<!-- Navbar on small screens (Hidden on medium and large screens) -->
-<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#" class="w3-bar-item w3-button" style="width:50% !important">HOME</a>
-    <a href="#about" class="w3-bar-item w3-button" style="width:50% !important">ABOUT</a>
-    <a href="#contact" class="w3-bar-item w3-button" style="width:50% !important">CONTACT</a>
-  </div>
-</div>
-
 <!-- Page Content -->
 <div class="w3-padding-large" id="main">
   <!-- Header/Home -->
   <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Matthew</h1>
-    <p>A 13-year-old boy who loves dogs</p>
+    <h1 class="w3-jumbo">Matthew's Dog Sittings</h1>
+    <p>13-year-old boy who loves to play and walk with his 3 dogs</p>
   </header>
 
   <!-- About Section -->
   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
     <h2 class="w3-text-light-grey">About Me</h2>
     <hr style="width:200px" class="w3-opacity">
-    <p>I'm a 13-year-old boy from Austin who has 3 dogs. I love to play and walk with them.</p>
+    <p>I'm Matthew, a 13-year-old boy from Austin who has 3 dogs. I love to play and walk with them.</p>
   <!-- End About Section -->
   </div>
-
+  
   <!-- Contact Section -->
   <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
     <h2 class="w3-text-light-grey">Contact Me</h2>
@@ -73,45 +92,33 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
       <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +1 737 288 5219</p>
       <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: matthewcrowder2011@gmail.com</p>
     </div><br>
-    <p>To book a sitting, fill out the form below:</p>
+    <p>Book a service:</p>
 
-    <form id="bookingForm" action="#" method="POST">
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Your Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16" type="email" placeholder="Your Email" required name="Email"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Walking or Playtime" required name="Service"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Amount of Time" required name="Time"></p>
+    <form>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Your Name" required id="name"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Your Contact Info" required id="contactInfo"></p>
       <p>
-        <button id="submitBtn" class="w3-button w3-light-grey w3-padding-large" type="submit">
-          <i class="fa fa-paper-plane"></i> BOOK NOW
+        <select class="w3-input w3-padding-16" id="serviceType">
+          <option value="Walk">Walking</option>
+          <option value="Play">Playtime</option>
+        </select>
+      </p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Duration (e.g., 1 hour)" required id="duration"></p>
+      <p>
+        <button class="w3-button w3-light-grey w3-padding-large" type="button" onclick="bookService()">
+          <i class="fa fa-calendar"></i> BOOK NOW
         </button>
       </p>
     </form>
   <!-- End Contact Section -->
   </div>
-
-  <script>
-    document.getElementById("bookingForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      const formData = new FormData(this);
-      const formDataJson = {};
-      formData.forEach(function(value, key){
-        formDataJson[key] = value;
-      });
-      const webhookURL = "https://discord.com/api/webhooks/1249221725430878249/1Oel-D2tSrhdlcJ05dBjlEF9iYaKvUfAs3ukE0Gkwx0VgjaaZmR4fGujWG1uPtvjK4bx";
-      fetch(webhookURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formDataJson)
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        alert('Your booking has been submitted successfully!');
-        document.getElementById("bookingForm").reset();
-      })
-      .catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
-        alert('There was an error submitting your booking. Please try again
+  
+    <!-- Footer -->
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <p class="w3-medium">Powered by <a href="https://www.w3schools
