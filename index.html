@@ -78,6 +78,37 @@ body, h1, h2, h3, h4, h5, h6 {
 .w3-button:hover {
   background-color: #45a049;
 }
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .w3-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+  .w3-sidebar a {
+    width: auto;
+    height: auto;
+    padding: 10px;
+    margin: 5px;
+  }
+  #main {
+    margin-left: 0;
+    padding: 10px;
+  }
+  .w3-container, .w3-card {
+    padding: 10px;
+  }
+  .w3-footer {
+    padding: 10px;
+  }
+  .w3-container h1, .w3-container p {
+    font-size: 24px;
+  }
+}
 </style>
 <script>
 function bookService() {
@@ -124,7 +155,7 @@ function bookService() {
   <!-- Header/Home -->
   <header class="w3-container w3-center" id="home">
     <h1 class="w3-jumbo"><span class="w3-hide-small">Welcome to</span> Matthew's Dog Sittings</h1>
-    <p>Child dog walking and playtime services in Austin</p>
+    <p>Professional dog walking and playtime services in Austin</p>
   </header>
 
   <!-- About Section -->
