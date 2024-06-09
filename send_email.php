@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $time = $_POST["Time"];
 
     // Email settings
-    $to = "matthewsdogwalking@gmail.com";
+    $to = "matthewsdogcare@gmail.com";
     $subject = "Booking Request from $name";
     $message = "Name: $name\n";
     $message .= "Email: $email\n";
